@@ -1,0 +1,19 @@
+
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Allow public read for the specific logo file
+    match /establishment_logo/app_logo {
+      allow read: if true;
+      // Allow admin or user to write (upload/update/delete)
+      // This rule also relies on custom claims for 'role'
+      allow write: if request.auth != null && (request.auth.token.role == 'admin' || request.auth.token.role == 'user');
+    }
+
+    // Default: Deny all other reads/writes to other paths for safety
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

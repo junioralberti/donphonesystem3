@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: 228 12% 8%; /* Very Dark Desaturated Blue */
+    --foreground: 210 20% 90%; /* Light Gray */
+
+    --card: 228 10% 12%; /* Slightly Lighter Dark Desaturated Blue */
+    --card-foreground: 210 20% 90%;
+
+    --popover: 228 10% 10%; /* Darker for Popovers/Dropdowns */
+    --popover-foreground: 210 20% 90%;
+
+    --primary: 190 90% 55%; /* Bright Cyan/Blue - For general highlights, icons, links */
+    --primary-foreground: 210 40% 98%; /* Light text for on-primary elements */
+    
+    --secondary: 228 10% 20%; /* Dark Gray for secondary elements */
+    --secondary-foreground: 210 20% 80%; /* Lighter gray for text on secondary */
+
+    --muted: 228 8% 15%; /* Darker Muted */
+    --muted-foreground: 210 15% 60%; /* Medium Gray for muted text */
+
+    --accent: 325 85% 60%; /* Bright Pink/Magenta - For CTAs, important highlights */
+    --accent-foreground: 0 0% 100%; /* White text for on-accent elements */
+
+    --destructive: 0 75% 55%; /* Adjusted for dark theme */
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 228 8% 25%; /* Subtle Dark Border */
+    --input: 228 8% 18%; /* Dark Input Background */
+    --ring: 190 90% 55%; /* Primary (Cyan/Blue) for focus rings */
+
+    --radius: 0.5rem;
+
+    /* Chart Colors */
+    --chart-1: 190 90% 55%;  /* Primary Blue/Cyan */
+    --chart-2: 325 85% 60%;  /* Accent Pink/Magenta */
+    --chart-3: 260 80% 65%;  /* Neon Purple */
+    --chart-4: 50 95% 55%;   /* Neon Yellow/Orange */
+    --chart-5: 130 80% 55%;  /* Neon Green */
+    
+    /* Sidebar specific theme */
+    --sidebar-background: 228 10% 10%; /* Very Dark for Sidebar Background */
+    --sidebar-foreground: 210 20% 85%; /* Light text for inactive sidebar items */
+    --sidebar-border: 228 8% 20%;     /* Border for sidebar elements */
+    --sidebar-ring: 190 90% 55%;       /* Ring color for sidebar focus, blue */
+
+    /* For active and hovered sidebar items */
+    --sidebar-primary: 325 85% 60%; /* Pink/Magenta for TEXT/ICON color of active/hovered items */
+    --sidebar-accent: 228 10% 15%;  /* Darker, slightly distinct BACKGROUND for active/hovered items */
+    /* --sidebar-accent-foreground is used by sidebar.tsx for active text color */
+    --sidebar-accent-foreground: 325 85% 60%; /* Pink/Magenta for TEXT/ICON on active/hover (matches sidebar-primary) */
+    --sidebar-primary-foreground: 0 0% 100%; /* White, if needed on a solid sidebar-primary background */
+  }
+
+  .dark {
+    /* Same as light theme for now, as the new theme is dark by default */
+    --background: 228 12% 8%;
+    --foreground: 210 20% 90%;
+    --card: 228 10% 12%;
+    --card-foreground: 210 20% 90%;
+    --popover: 228 10% 10%;
+    --popover-foreground: 210 20% 90%;
+    --primary: 190 90% 55%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 228 10% 20%;
+    --secondary-foreground: 210 20% 80%;
+    --muted: 228 8% 15%;
+    --muted-foreground: 210 15% 60%;
+    --accent: 325 85% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 228 8% 25%;
+    --input: 228 8% 18%;
+    --ring: 190 90% 55%;
+
+    --chart-1: 190 90% 55%;
+    --chart-2: 325 85% 60%;
+    --chart-3: 260 80% 65%;
+    --chart-4: 50 95% 55%;
+    --chart-5: 130 80% 55%;
+    
+    --sidebar-background: 228 10% 10%;
+    --sidebar-foreground: 210 20% 85%;
+    --sidebar-border: 228 8% 20%;
+    --sidebar-ring: 190 90% 55%;
+    --sidebar-primary: 325 85% 60%;
+    --sidebar-accent: 228 10% 15%;
+    --sidebar-accent-foreground: 325 85% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
