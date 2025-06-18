@@ -3,11 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-<<<<<<< HEAD
     "dev": "next dev -p 9003",
-=======
-    "dev": "next dev --turbopack -p 9003",
->>>>>>> 5a9736e1bc95fd07c8314d399cb646a39cc3aa78
     "genkit:dev": "genkit start -- tsx src/ai/dev.ts",
     "genkit:watch": "genkit start -- tsx --watch src/ai/dev.ts",
     "build": "next build",
@@ -86,12 +82,9 @@
         "filter": ["**/*"]
       }
     ],
-<<<<<<< HEAD
     "extraMetadata": {
       "main": "main.js"
     },
-=======
->>>>>>> 5a9736e1bc95fd07c8314d399cb646a39cc3aa78
     "directories": {
       "output": "dist"
     },
