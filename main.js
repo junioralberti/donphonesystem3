@@ -4,7 +4,7 @@ require('dotenv').config(); // Carrega as variáveis do .env
 const { app, BrowserWindow, dialog } = require('electron');
 const path = require('path');
 const { spawn } = require('child_process'); // Importa 'spawn' para iniciar o processo Next.js
-const fs = require('fs'); // <--- ESSA LINHA PRECISA ESTAR AQUI!
+const fs = require('fs'); // <--- ESTA LINHA PRECISA ESTAR AQUI!
 const isDev = !app.isPackaged; // Verifica se o aplicativo está em modo de desenvolvimento ou empacotado
 
 let mainWindow;
@@ -15,7 +15,7 @@ const NEXT_PORT = process.env.NEXT_PORT || 9003;
 const NEXT_URL = `http://localhost:${NEXT_PORT}`;
 
 // Diretório para logs no ambiente empacotado
-const logDirectory = path.join(app.getPath('userData'), 'logs'); // <--- E ESSAS TAMBÉM!
+const logDirectory = path.join(app.getPath('userData'), 'logs'); // <--- ESSAS LINHAS TAMBÉM!
 if (!fs.existsSync(logDirectory)) {
   fs.mkdirSync(logDirectory, { recursive: true }); // Cria o diretório de logs se não existir
 }
