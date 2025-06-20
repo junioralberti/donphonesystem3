@@ -1,4 +1,3 @@
-
 "use client";
 
 import type { Client } from "@/lib/schemas/client";
@@ -35,6 +34,7 @@ interface ClientsTableProps {
 }
 
 export function ClientsTable({ clients, onEdit, onDelete, isLoadingDeleteForId }: ClientsTableProps) {
+  // CORREÇÃO AQUI: Se a condição for verdadeira, a função retorna este JSX.
   if (!clients || clients.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center gap-4 py-12 text-center">
@@ -45,6 +45,8 @@ export function ClientsTable({ clients, onEdit, onDelete, isLoadingDeleteForId }
     );
   }
 
+  // Se o 'if' acima não for executado (ou seja, se houver clientes), então a função CONTINUA
+  // e explicitamente retorna o JSX da tabela.
   return (
     <div className="rounded-md border">
       <Table>
@@ -85,11 +87,7 @@ export function ClientsTable({ clients, onEdit, onDelete, isLoadingDeleteForId }
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                       <AlertDialogCancel>Cancelar</AlertDialogCancel>
-<<<<<<< HEAD
                       <AlertDialogAction onClick={async () => client.id && (await onDelete(client.id))}>
-=======
-                      <AlertDialogAction onClick={async () => client.id && await onDelete(client.id)}>
->>>>>>> 5a9736e1bc95fd07c8314d399cb646a39cc3aa78
                         Excluir Permanentemente
                       </AlertDialogAction>
                     </AlertDialogFooter>

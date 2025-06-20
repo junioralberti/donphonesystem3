@@ -1,4 +1,3 @@
-
 "use client";
 
 import type { Provider } from "@/lib/schemas/provider";
@@ -86,11 +85,8 @@ export function ProvidersTable({ providers, onEdit, onDelete, isLoadingDeleteFor
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                       <AlertDialogCancel>Cancelar</AlertDialogCancel>
-<<<<<<< HEAD
-                      <AlertDialogAction onClick={async () => provider.id && (await onDelete(provider.id))}>
-=======
+                      {/* Removido o marcador de conflito e aceitando 'await onDelete(provider.id)' */}
                       <AlertDialogAction onClick={async () => provider.id && await onDelete(provider.id)}>
->>>>>>> 5a9736e1bc95fd07c8314d399cb646a39cc3aa78
                         Excluir Permanentemente
                       </AlertDialogAction>
                     </AlertDialogFooter>

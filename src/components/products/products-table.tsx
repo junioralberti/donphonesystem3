@@ -1,4 +1,3 @@
-
 "use client";
 
 import type { Product } from "@/lib/schemas/product";
@@ -105,11 +104,8 @@ export function ProductsTable({ products, onEdit, onDelete, isLoadingDeleteForId
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                       <AlertDialogCancel>Cancelar</AlertDialogCancel>
-<<<<<<< HEAD
-                      <AlertDialogAction onClick={async () => product.id && (await onDelete(product.id))}>
-=======
+                      {/* Removido o marcador de conflito e aceitando 'await onDelete(product.id)' */}
                       <AlertDialogAction onClick={async () => product.id && await onDelete(product.id)}>
->>>>>>> 5a9736e1bc95fd07c8314d399cb646a39cc3aa78
                         Excluir Permanentemente
                       </AlertDialogAction>
                     </AlertDialogFooter>

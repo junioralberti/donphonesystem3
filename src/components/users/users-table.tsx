@@ -1,4 +1,3 @@
-
 "use client";
 
 import type { User } from "@/lib/schemas/user";
@@ -70,7 +69,7 @@ export function UsersTable({ users, onEdit, onDelete, isLoadingDeleteForId, curr
                 </Badge>
               </TableCell>
               <TableCell className="hidden lg:table-cell text-sm text-muted-foreground">
-                 {user.createdAt instanceof Date ? format(user.createdAt, "dd/MM/yyyy 'às' HH:mm", { locale: ptBR }) : (user.createdAt ? String(user.createdAt) : 'N/A')}
+                   {user.createdAt instanceof Date ? format(user.createdAt, "dd/MM/yyyy 'às' HH:mm", { locale: ptBR }) : (user.createdAt ? String(user.createdAt) : 'N/A')}
               </TableCell>
               <TableCell className="text-right space-x-1 sm:space-x-2">
                 <Button variant="outline" size="icon" onClick={() => onEdit(user)} aria-label="Editar usuário" disabled={!user.id}>
@@ -78,10 +77,10 @@ export function UsersTable({ users, onEdit, onDelete, isLoadingDeleteForId, curr
                 </Button>
                 <AlertDialog>
                   <AlertDialogTrigger asChild>
-                    <Button 
-                      variant="destructive" 
-                      size="icon" 
-                      disabled={isLoadingDeleteForId === user.id || currentUserId === user.id || !user.id} 
+                    <Button
+                      variant="destructive"
+                      size="icon"
+                      disabled={isLoadingDeleteForId === user.id || currentUserId === user.id || !user.id}
                       aria-label="Excluir usuário"
                       title={currentUserId === user.id ? "Não é possível excluir o próprio usuário" : "Excluir usuário"}
                     >
@@ -97,11 +96,8 @@ export function UsersTable({ users, onEdit, onDelete, isLoadingDeleteForId, curr
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                       <AlertDialogCancel>Cancelar</AlertDialogCancel>
-<<<<<<< HEAD
-                      <AlertDialogAction onClick={async () => user.id && (await onDelete(user.id))}>
-=======
+                      {/* Removido o marcador de conflito e aceitando 'await onDelete(user.id)' */}
                       <AlertDialogAction onClick={async () => user.id && await onDelete(user.id)}>
->>>>>>> 5a9736e1bc95fd07c8314d399cb646a39cc3aa78
                         Excluir Permanentemente
                       </AlertDialogAction>
                     </AlertDialogFooter>

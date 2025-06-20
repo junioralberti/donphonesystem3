@@ -1,4 +1,3 @@
-
 "use client";
 
 import type { Expense, ExpenseStatus, ExpenseCategory } from "@/lib/schemas/expense";
@@ -38,14 +37,14 @@ interface ExpensesTableProps {
   isLoadingToggleForId?: string | null;
 }
 
-export function ExpensesTable({ 
-    expenses, 
-    onEdit, 
-    onDelete, 
+export function ExpensesTable({
+    expenses,
+    onEdit,
+    onDelete,
     onToggleStatus,
     isLoading,
     isLoadingDeleteForId,
-    isLoadingToggleForId 
+    isLoadingToggleForId
 }: ExpensesTableProps) {
 
   if (isLoading && (!expenses || expenses.length === 0)) {
@@ -56,7 +55,7 @@ export function ExpensesTable({
       </div>
     );
   }
-  
+
   if (!expenses || expenses.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center gap-4 py-12 text-center">
@@ -94,17 +93,17 @@ export function ExpensesTable({
                 <Badge variant="outline" className="text-xs">{expense.category}</Badge>
               </TableCell>
               <TableCell className="text-center">
-                <Button 
-                  variant="ghost" 
-                  size="sm" 
+                <Button
+                  variant="ghost"
+                  size="sm"
                   onClick={() => expense.id && onToggleStatus(expense.id, expense.status, expense.status === "Pendente" ? new Date() : undefined)}
                   disabled={isLoadingToggleForId === expense.id}
                   className={`h-auto px-2 py-1 text-xs rounded-full font-medium
                     ${expense.status === 'Pago' ? 'bg-green-100 text-green-700 hover:bg-green-200' : 'bg-red-100 text-red-700 hover:bg-red-200'}`}
                 >
                   {isLoadingToggleForId === expense.id ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : (
-                    expense.status === 'Pago' ? 
-                    <CheckCircle2 className="mr-1 h-3.5 w-3.5" /> : 
+                    expense.status === 'Pago' ?
+                    <CheckCircle2 className="mr-1 h-3.5 w-3.5" /> :
                     <XCircle className="mr-1 h-3.5 w-3.5" />
                   )}
                   {expense.status}
@@ -129,11 +128,8 @@ export function ExpensesTable({
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                       <AlertDialogCancel>Cancelar</AlertDialogCancel>
-<<<<<<< HEAD
-                      <AlertDialogAction onClick={async () => expense.id && (await onDelete(expense.id))}>
-=======
+                      {/* Removido o marcador de conflito e aceitando 'await onDelete(expense.id)' */}
                       <AlertDialogAction onClick={async () => expense.id && await onDelete(expense.id)}>
->>>>>>> 5a9736e1bc95fd07c8314d399cb646a39cc3aa78
                         Excluir Permanentemente
                       </AlertDialogAction>
                     </AlertDialogFooter>
@@ -147,11 +143,10 @@ export function ExpensesTable({
             <TableRow>
                 <TableCell className="font-semibold">Total</TableCell>
                 <TableCell className="text-right font-bold">{totalAmount.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</TableCell>
-                <TableCell colSpan={4}></TableCell> 
+                <TableCell colSpan={4}></TableCell>
             </TableRow>
         </TableFooter>
       </Table>
     </div>
   );
 }
-
