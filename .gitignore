@@ -19,10 +19,7 @@
 
 # production
 /build
-<<<<<<< HEAD
-/dist/  # <-- ADICIONE ESTA LINHA
-=======
->>>>>>> 5a9736e1bc95fd07c8314d399cb646a39cc3aa78
+/dist/
 
 # misc
 .DS_Store
