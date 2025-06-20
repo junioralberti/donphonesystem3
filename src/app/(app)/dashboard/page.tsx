@@ -1,15 +1,7 @@
-<<<<<<< HEAD
-"use client";
-
-import { useState, useEffect } from "react";
-import Link from 'next/link'; // Importante manter o Link
-=======
-
 "use client";
 
 import { useState, useEffect } from "react";
 import Link from 'next/link';
->>>>>>> 5a9736e1bc95fd07c8314d399cb646a39cc3aa78
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Activity, CreditCard, DollarSign, Users, Package, Wrench, ShoppingCart, BarChart3, BrainCircuit, Landmark, UserCog } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -45,11 +37,7 @@ export default function DashboardPage() {
     queryKey: ["openServiceOrdersCount"],
     queryFn: getCountOfOpenServiceOrders,
   });
-<<<<<<< HEAD
-
-=======
   
->>>>>>> 5a9736e1bc95fd07c8314d399cb646a39cc3aa78
   useEffect(() => {
     const dataLoading = isLoadingSalesRevenue || isLoadingOsRevenue || isLoadingClients || isLoadingOpenOsCount;
     if (!dataLoading) {
@@ -66,29 +54,16 @@ export default function DashboardPage() {
     if (typeof value === 'number' && isCurrency) return <div className="text-2xl font-bold text-foreground">R$ {value.toFixed(2).replace('.', ',')}</div>;
     return <div className="text-2xl font-bold text-foreground">{value}</div>;
   };
-<<<<<<< HEAD
-
-  const renderStatSubtitle = (isLoading: boolean, error?: Error | null, defaultText: string = "Dados atualizados.") => {
-    if (isLoading || isSettingUpDashboard) return <Skeleton className="h-3 w-32 bg-muted/50" />;
-    if (error) return <p className="text-xs text-destructive">{error.message}</p>;
-    return <p className="text-xs text-muted-foreground">{defaultText}</p>;
-  };
-
-  // Filter navItems for dashboard display (exclude settings, logout, users for non-admin)
-  const dashboardNavItems = navItems.filter(item =>
-    !item.isBottom &&
-=======
   
   const renderStatSubtitle = (isLoading: boolean, error?: Error | null, defaultText: string = "Dados atualizados.") => {
-     if (isLoading || isSettingUpDashboard) return <Skeleton className="h-3 w-32 bg-muted/50" />;
-     if (error) return <p className="text-xs text-destructive">{error.message}</p>;
-     return <p className="text-xs text-muted-foreground">{defaultText}</p>;
+      if (isLoading || isSettingUpDashboard) return <Skeleton className="h-3 w-32 bg-muted/50" />;
+      if (error) return <p className="text-xs text-destructive">{error.message}</p>;
+      return <p className="text-xs text-muted-foreground">{defaultText}</p>;
   };
 
   // Filter navItems for dashboard display (exclude settings, logout, users for non-admin)
   const dashboardNavItems = navItems.filter(item => 
     !item.isBottom && 
->>>>>>> 5a9736e1bc95fd07c8314d399cb646a39cc3aa78
     item.href !== '/dashboard' && // Don't link to dashboard from dashboard
     (item.role ? item.role === userRole : true)
   );
@@ -128,13 +103,8 @@ export default function DashboardPage() {
             <CreditCard className="h-4 w-4 text-primary" />
           </CardHeader>
           <CardContent>
-<<<<<<< HEAD
             {renderStatValue(openServiceOrdersCount ?? "0", isSettingUpDashboard, false, openOsCountError)}
             {renderStatSubtitle(isSettingUpDashboard, openOsCountError, "OS em Aberto, Em Andamento ou Aguardando Peça.")}
-=======
-             {renderStatValue(openServiceOrdersCount ?? "0", isSettingUpDashboard, false, openOsCountError)}
-             {renderStatSubtitle(isSettingUpDashboard, openOsCountError, "OS em Aberto, Em Andamento ou Aguardando Peça.")}
->>>>>>> 5a9736e1bc95fd07c8314d399cb646a39cc3aa78
           </CardContent>
         </Card>
         <Card>
@@ -156,8 +126,6 @@ export default function DashboardPage() {
         </CardHeader>
         <CardContent className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {dashboardNavItems.map((item) => (
-<<<<<<< HEAD
-            // AQUI ESTÁ A ALTERAÇÃO: Removido legacyBehavior e a tag <a> interna
             <Link href={item.href} key={item.href} passHref className="block hover:no-underline">
               <Card className="hover:shadow-md hover:border-primary/50 transition-all duration-200 h-full bg-card hover:bg-card/90">
                 <CardHeader className="flex flex-row items-center gap-3 space-y-0 p-4">
@@ -165,24 +133,6 @@ export default function DashboardPage() {
                   <CardTitle className="text-base font-semibold text-card-foreground">{item.title}</CardTitle>
                 </CardHeader>
               </Card>
-=======
-            <Link href={item.href} key={item.href} passHref legacyBehavior>
-              <a className="block hover:no-underline">
-                <Card className="hover:shadow-md hover:border-primary/50 transition-all duration-200 h-full bg-card hover:bg-card/90">
-                  <CardHeader className="flex flex-row items-center gap-3 space-y-0 p-4">
-                    <item.icon className="h-6 w-6 text-primary" />
-                    <CardTitle className="text-base font-semibold text-card-foreground">{item.title}</CardTitle>
-                  </CardHeader>
-                  {/* 
-                  <CardContent className="p-4 pt-0">
-                    <p className="text-xs text-muted-foreground">
-                      {`Gerenciar ${item.title.toLowerCase()} do sistema.`}
-                    </p>
-                  </CardContent>
-                  */}
-                </Card>
-              </a>
->>>>>>> 5a9736e1bc95fd07c8314d399cb646a39cc3aa78
             </Link>
           ))}
         </CardContent>
@@ -199,8 +149,4 @@ export default function DashboardPage() {
       </Card>
     </div>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 5a9736e1bc95fd07c8314d399cb646a39cc3aa78

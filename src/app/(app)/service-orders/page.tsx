@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useEffect } from "react";
@@ -29,7 +28,7 @@ type DeviceType = "Celular" | "Notebook" | "Tablet" | "Placa" | "Outro";
 const deviceTypes: DeviceType[] = ["Celular", "Notebook", "Tablet", "Placa", "Outro"];
 
 interface SoldProductItem extends SoldProductItemInput {
-  tempId: string; 
+  tempId: string;
 }
 
 
@@ -189,7 +188,7 @@ export default function ServiceOrdersPage() {
       toast({ title: "O.S. Excluída", description: `A Ordem de Serviço ${deletedOsId} foi excluída.`, variant: "default"});
     },
     onError: (error: Error) => {
-       toast({ title: "Erro ao Excluir O.S.", description: error.message, variant: "destructive" });
+        toast({ title: "Erro ao Excluir O.S.", description: error.message, variant: "destructive" });
     }
   });
 
@@ -224,7 +223,7 @@ export default function ServiceOrdersPage() {
 
   const handleRemoveSoldProduct = (tempId: string) => {
     setSoldProductsList(prev => prev.filter(p => p.tempId !== tempId));
-     toast({ title: "Produto Removido", description: "Produto removido da OS.", variant: "destructive" });
+      toast({ title: "Produto Removido", description: "Produto removido da OS.", variant: "destructive" });
   };
 
   useEffect(() => {
@@ -238,7 +237,7 @@ export default function ServiceOrdersPage() {
   const handleSubmitServiceOrder = async (e: FormEvent) => {
     e.preventDefault();
     if (!clientName || !deviceBrandModel || !problemReportedByClient) {
-       toast({
+        toast({
         title: "Campos Obrigatórios",
         description: "Cliente, Modelo do Aparelho e Defeito Informado são obrigatórios.",
         variant: "destructive",
@@ -391,11 +390,11 @@ export default function ServiceOrdersPage() {
   const ServiceOrdersSkeleton = () => (
     <div className="space-y-3">
       {[...Array(5)].map((_, i) => (
-         <div key={i} className="flex items-center justify-between p-4 border rounded-lg">
+        <div key={i} className="flex items-center justify-between p-4 border rounded-lg">
           <div className="space-y-1.5 w-2/3">
             <Skeleton className="h-5 w-1/3 rounded bg-muted/50" />
             <Skeleton className="h-4 w-2/3 rounded bg-muted/50" />
-             <Skeleton className="h-3 w-1/2 rounded bg-muted/50" />
+            <Skeleton className="h-3 w-1/2 rounded bg-muted/50" />
           </div>
           <div className="flex items-center space-x-2">
             <Skeleton className="h-9 w-9 rounded-md bg-muted/50" />
@@ -414,7 +413,7 @@ export default function ServiceOrdersPage() {
         <h1 className="font-headline text-3xl font-semibold text-foreground">Ordens de Serviço</h1>
         <Dialog open={isNewServiceOrderDialogOpen} onOpenChange={(isOpen) => {
           setIsNewServiceOrderDialogOpen(isOpen);
-          if (!isOpen) resetFormFields(); 
+          if (!isOpen) resetFormFields();
         }}>
           <DialogTrigger asChild>
             <Button onClick={() => { resetFormFields(); setIsNewServiceOrderDialogOpen(true); }} className="bg-accent hover:bg-accent/90 text-accent-foreground">
@@ -460,11 +459,11 @@ export default function ServiceOrdersPage() {
                         </div>
                         <div>
                           <Label htmlFor="osTechnician">Técnico Responsável</Label>
-                           <Input 
-                                id="osTechnician" 
-                                value={responsibleTechnicianName}
-                                onChange={(e) => setResponsibleTechnicianName(e.target.value)}
-                                placeholder="Nome do técnico" 
+                           <Input
+                              id="osTechnician"
+                              value={responsibleTechnicianName}
+                              onChange={(e) => setResponsibleTechnicianName(e.target.value)}
+                              placeholder="Nome do técnico"
                             />
                         </div>
                       </div>
@@ -476,12 +475,12 @@ export default function ServiceOrdersPage() {
                     <CardContent className="space-y-4">
                        <div className="space-y-1">
                         <Label htmlFor="osClientName">Cliente (Nome Completo)</Label>
-                        <Input 
-                            id="osClientName" 
-                            value={clientName} 
-                            onChange={(e) => setClientName(e.target.value)} 
+                        <Input
+                            id="osClientName"
+                            value={clientName}
+                            onChange={(e) => setClientName(e.target.value)}
                             placeholder="Digite o nome do cliente"
-                            required 
+                            required
                         />
                        </div>
                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -541,10 +540,10 @@ export default function ServiceOrdersPage() {
                     <CardContent className="space-y-4">
                       <div>
                         <Label htmlFor="osProblemReported">Defeito Informado pelo Cliente</Label>
-                        <Textarea 
-                          id="osProblemReported" 
-                          value={problemReportedByClient} 
-                          onChange={(e) => setProblemReportedByClient(e.target.value)} 
+                        <Textarea
+                          id="osProblemReported"
+                          value={problemReportedByClient}
+                          onChange={(e) => setProblemReportedByClient(e.target.value)}
                           placeholder="Ex: Não liga, tela quebrada, bateria viciada..."
                           rows={3}
                           required
@@ -557,14 +556,14 @@ export default function ServiceOrdersPage() {
                        <div>
                         <Label htmlFor="osInternalObservations">Observações Internas (Opcional)</Label>
                         <Textarea id="osInternalObservations" value={internalObservations} onChange={(e) => setInternalObservations(e.target.value)} placeholder="Notas internas, ex: aguardando aprovação do orçamento..." rows={2} />
-                      </div>
+                       </div>
                     </CardContent>
                   </Card>
                   
                   <Card>
                     <CardHeader><CardTitle className="text-xl">Serviços e Peças (Descritivo)</CardTitle></CardHeader>
                     <CardContent className="space-y-4">
-                        <div>
+                       <div>
                             <Label htmlFor="osServicesPerformed">Serviços Executados (Descrição)</Label>
                             <Textarea id="osServicesPerformed" value={servicesPerformedDescription} onChange={(e) => setServicesPerformedDescription(e.target.value)} placeholder="Descreva os serviços realizados..." rows={3} />
                         </div>
@@ -583,12 +582,12 @@ export default function ServiceOrdersPage() {
                     <CardContent className="space-y-6">
                         <div>
                             <Label htmlFor="osServiceManualValue">Valor do Serviço (R$)</Label>
-                            <Input 
-                                id="osServiceManualValue" 
-                                type="text" 
-                                value={serviceManualValueInput} 
-                                onChange={(e) => setServiceManualValueInput(e.target.value.replace(/[^0-9,]/g, ''))} 
-                                placeholder="Ex: 150,00" 
+                            <Input
+                                id="osServiceManualValue"
+                                type="text"
+                                value={serviceManualValueInput}
+                                onChange={(e) => setServiceManualValueInput(e.target.value.replace(/[^0-9,]/g, ''))}
+                                placeholder="Ex: 150,00"
                             />
                         </div>
                         
@@ -597,30 +596,30 @@ export default function ServiceOrdersPage() {
                             <div className="grid grid-cols-1 sm:grid-cols-12 gap-2 items-end">
                                 <div className="sm:col-span-5">
                                     <Label htmlFor="currentProductName">Nome do Produto</Label>
-                                    <Input 
-                                        id="currentProductName" 
-                                        value={currentProductNameInput} 
-                                        onChange={(e) => setCurrentProductNameInput(e.target.value)} 
+                                    <Input
+                                        id="currentProductName"
+                                        value={currentProductNameInput}
+                                        onChange={(e) => setCurrentProductNameInput(e.target.value)}
                                         placeholder="Ex: Película de Vidro"
                                     />
                                 </div>
                                 <div className="sm:col-span-2">
                                     <Label htmlFor="currentProductQty">Qtd.</Label>
-                                    <Input 
-                                        id="currentProductQty" 
-                                        type="number" 
-                                        value={currentProductQtyInput} 
-                                        onChange={(e) => setCurrentProductQtyInput(e.target.value)} 
+                                    <Input
+                                        id="currentProductQty"
+                                        type="number"
+                                        value={currentProductQtyInput}
+                                        onChange={(e) => setCurrentProductQtyInput(e.target.value)}
                                         min="1"
                                     />
                                 </div>
                                 <div className="sm:col-span-3">
                                     <Label htmlFor="currentProductPrice">Preço Unit. (R$)</Label>
-                                    <Input 
-                                        id="currentProductPrice" 
-                                        type="text" 
-                                        value={currentProductPriceInput} 
-                                        onChange={(e) => setCurrentProductPriceInput(e.target.value.replace(/[^0-9,]/g, ''))} 
+                                    <Input
+                                        id="currentProductPrice"
+                                        type="text"
+                                        value={currentProductPriceInput}
+                                        onChange={(e) => setCurrentProductPriceInput(e.target.value.replace(/[^0-9,]/g, ''))}
                                         placeholder="Ex: 25,00"
                                     />
                                 </div>
@@ -678,306 +677,18 @@ export default function ServiceOrdersPage() {
               </ScrollArea>
               <DialogFooter className="border-t pt-6 mt-6 pr-4 flex flex-col sm:flex-row justify-between items-center w-full">
                 <Button type="button" variant="outline" onClick={() => handlePrintOS({
-                    osNumber: editingServiceOrder ? editingServiceOrder.osNumber : "PREVISUALIZAÇÃO", 
+                    osNumber: editingServiceOrder ? editingServiceOrder.osNumber : "PREVISUALIZAÇÃO",
                     openingDate: editingServiceOrder ? editingServiceOrder.openingDate : new Date(),
-                    clientName, deviceBrandModel, problemReportedByClient, 
+                    clientName, deviceBrandModel, problemReportedByClient,
                     grandTotalValue: parseFloat(grandTotalDisplay.replace(',', '.')) || 0,
                 })}>
                     <Printer className="mr-2 h-4 w-4" /> Imprimir OS (Via Cliente)
                 </Button>
                 <div className="flex gap-2 mt-4 sm:mt-0">
                     <DialogClose asChild>
-                        <Button type="button" variant="ghost" onClick={() => { 
-                            setIsNewServiceOrderDialogOpen(false); 
-                            setIsEditServiceOrderDialogOpen(false); 
-                            resetFormFields(); 
-                        }}>
-                            Cancelar
-                        </Button>
-                    </DialogClose>
-                    <Button type="submit" disabled={addServiceOrderMutation.isPending || updateServiceOrderMutation.isPending} className="bg-accent hover:bg-accent/90 text-accent-foreground">
-                      {(addServiceOrderMutation.isPending || updateServiceOrderMutation.isPending) && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                      {editingServiceOrder ? "Salvar Alterações" : "Criar O.S."}
-                    </Button>
-                </div>
-              </DialogFooter>
-            </form>
-          </DialogContent>
-        </Dialog>
-
-        <Dialog open={isEditServiceOrderDialogOpen} onOpenChange={(isOpen) => {
-          setIsEditServiceOrderDialogOpen(isOpen);
-          if (!isOpen) resetFormFields(); 
-        }}>
-             <DialogContent className="sm:max-w-2xl md:max-w-3xl lg:max-w-4xl">
-            <DialogHeader>
-              <DialogTitle>Editar Ordem de Serviço</DialogTitle>
-              <DialogDescription>
-                Atualize os dados da O.S.
-              </DialogDescription>
-            </DialogHeader>
-            <form onSubmit={handleSubmitServiceOrder}>
-              <ScrollArea className="h-[75vh] p-1 pr-3">
-                <div className="space-y-6 p-2">
-                  <Card>
-                    <CardHeader><CardTitle className="text-xl">Dados Gerais da OS</CardTitle></CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div>
-                          <Label htmlFor="osNumberFormEdit">Número da OS</Label>
-                          <Input id="osNumberFormEdit" value={formOsNumber} disabled className="bg-muted/50" />
-                        </div>
-                        <div>
-                          <Label htmlFor="osOpeningDateFormEdit">Data de Abertura</Label>
-                          <Input id="osOpeningDateFormEdit" value={formOpeningDate} disabled className="bg-muted/50" />
-                        </div>
-                        <div>
-                          <Label htmlFor="osDeliveryForecastEdit">Previsão de Entrega</Label>
-                          <Input id="osDeliveryForecastEdit" type="date" value={deliveryForecastDate} onChange={(e) => setDeliveryForecastDate(e.target.value)} />
-                        </div>
-                      </div>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                          <Label htmlFor="osStatusEdit">Status da OS</Label>
-                          <Select value={status} onValueChange={(value: ServiceOrderStatus) => setStatus(value)}>
-                            <SelectTrigger id="osStatusEdit"><SelectValue placeholder="Selecione o status" /></SelectTrigger>
-                            <SelectContent>
-                              {serviceOrderStatuses.map(s => <SelectItem key={s} value={s}>{s}</SelectItem>)}
-                            </SelectContent>
-                          </Select>
-                        </div>
-                        <div>
-                          <Label htmlFor="osTechnicianEdit">Técnico Responsável</Label>
-                           <Input 
-                                id="osTechnicianEdit" 
-                                value={responsibleTechnicianName}
-                                onChange={(e) => setResponsibleTechnicianName(e.target.value)}
-                                placeholder="Nome do técnico" 
-                            />
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card>
-                    <CardHeader><CardTitle className="text-xl">Dados do Cliente</CardTitle></CardHeader>
-                    <CardContent className="space-y-4">
-                       <div className="space-y-1">
-                        <Label htmlFor="osClientNameEdit">Cliente (Nome Completo)</Label>
-                        <Input 
-                            id="osClientNameEdit" 
-                            value={clientName} 
-                            onChange={(e) => setClientName(e.target.value)} 
-                            placeholder="Digite o nome do cliente"
-                            required 
-                        />
-                       </div>
-                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <Label htmlFor="osClientCpfCnpjEdit">CPF/CNPJ (Opcional)</Label>
-                            <Input id="osClientCpfCnpjEdit" value={clientCpfCnpj} onChange={(e) => setClientCpfCnpj(e.target.value)} placeholder="000.000.000-00 ou 00.000.000/0001-00" />
-                        </div>
-                        <div>
-                            <Label htmlFor="osClientPhoneEdit">Telefone/WhatsApp (Opcional)</Label>
-                            <Input id="osClientPhoneEdit" value={clientPhone} onChange={(e) => setClientPhone(e.target.value)} placeholder="(00) 00000-0000" />
-                        </div>
-                       </div>
-                       <div>
-                        <Label htmlFor="osClientEmailEdit">E-mail (Opcional)</Label>
-                        <Input id="osClientEmailEdit" type="email" value={clientEmail} onChange={(e) => setClientEmail(e.target.value)} placeholder="cliente@email.com" />
-                       </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card>
-                    <CardHeader><CardTitle className="text-xl">Informações do Aparelho</CardTitle></CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                          <Label htmlFor="osDeviceTypeEdit">Tipo de Aparelho</Label>
-                          <Select value={deviceType} onValueChange={(value: DeviceType) => setDeviceType(value)}>
-                            <SelectTrigger id="osDeviceTypeEdit"><SelectValue placeholder="Selecione o tipo" /></SelectTrigger>
-                            <SelectContent>
-                              {deviceTypes.map(type => <SelectItem key={type} value={type}>{type}</SelectItem>)}
-                            </SelectContent>
-                          </Select>
-                        </div>
-                        <div>
-                          <Label htmlFor="osDeviceBrandModelEdit">Marca/Modelo</Label>
-                          <Input id="osDeviceBrandModelEdit" value={deviceBrandModel} onChange={(e) => setDeviceBrandModel(e.target.value)} placeholder="Ex: Samsung A20, iPhone 11" required />
-                        </div>
-                      </div>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                          <Label htmlFor="osDeviceImeiSerialEdit">IMEI / Número de Série (Opcional)</Label>
-                          <Input id="osDeviceImeiSerialEdit" value={deviceImeiSerial} onChange={(e) => setDeviceImeiSerial(e.target.value)} placeholder="IMEI ou N/S" />
-                        </div>
-                        <div>
-                          <Label htmlFor="osDeviceColorEdit">Cor (Opcional)</Label>
-                          <Input id="osDeviceColorEdit" value={deviceColor} onChange={(e) => setDeviceColor(e.target.value)} placeholder="Ex: Preto, Azul" />
-                        </div>
-                      </div>
-                      <div>
-                        <Label htmlFor="osDeviceAccessoriesEdit">Acessórios Recebidos (Opcional)</Label>
-                        <Input id="osDeviceAccessoriesEdit" value={deviceAccessories} onChange={(e) => setDeviceAccessories(e.target.value)} placeholder="Ex: Fonte, cabo, fone, capinha" />
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card>
-                    <CardHeader><CardTitle className="text-xl">Problemas e Diagnóstico</CardTitle></CardHeader>
-                    <CardContent className="space-y-4">
-                      <div>
-                        <Label htmlFor="osProblemReportedEdit">Defeito Informado pelo Cliente</Label>
-                        <Textarea 
-                          id="osProblemReportedEdit" 
-                          value={problemReportedByClient} 
-                          onChange={(e) => setProblemReportedByClient(e.target.value)} 
-                          placeholder="Ex: Não liga, tela quebrada, bateria viciada..."
-                          rows={3}
-                          required
-                        />
-                      </div>
-                      <div>
-                        <Label htmlFor="osTechnicalDiagnosisEdit">Diagnóstico Técnico (Opcional)</Label>
-                        <Textarea id="osTechnicalDiagnosisEdit" value={technicalDiagnosis} onChange={(e) => setTechnicalDiagnosis(e.target.value)} placeholder="Detalhes do diagnóstico técnico..." rows={3} />
-                      </div>
-                       <div>
-                        <Label htmlFor="osInternalObservationsEdit">Observações Internas (Opcional)</Label>
-                        <Textarea id="osInternalObservationsEdit" value={internalObservations} onChange={(e) => setInternalObservations(e.target.value)} placeholder="Notas internas, ex: aguardando aprovação do orçamento..." rows={2} />
-                      </div>
-                    </CardContent>
-                  </Card>
-                  
-                  <Card>
-                    <CardHeader><CardTitle className="text-xl">Serviços e Peças (Descritivo)</CardTitle></CardHeader>
-                    <CardContent className="space-y-4">
-                        <div>
-                            <Label htmlFor="osServicesPerformedEdit">Serviços Executados (Descrição)</Label>
-                            <Textarea id="osServicesPerformedEdit" value={servicesPerformedDescription} onChange={(e) => setServicesPerformedDescription(e.target.value)} placeholder="Descreva os serviços realizados..." rows={3} />
-                        </div>
-                        <div>
-                            <Label htmlFor="osPartsUsedEdit">Produtos/Peças Utilizadas (Descrição)</Label>
-                            <Textarea id="osPartsUsedEdit" value={partsUsedDescription} onChange={(e) => setPartsUsedDescription(e.target.value)} placeholder="Liste as peças utilizadas..." rows={3} />
-                        </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card>
-                    <CardHeader>
-                        <CardTitle className="text-xl">Valores e Produtos Adicionais</CardTitle>
-                        <CardDescription>Insira o valor do serviço e adicione produtos vendidos à parte.</CardDescription>
-                    </CardHeader>
-                    <CardContent className="space-y-6">
-                        <div>
-                            <Label htmlFor="osServiceManualValueEdit">Valor do Serviço (R$)</Label>
-                            <Input 
-                                id="osServiceManualValueEdit" 
-                                type="text" 
-                                value={serviceManualValueInput} 
-                                onChange={(e) => setServiceManualValueInput(e.target.value.replace(/[^0-9,]/g, ''))} 
-                                placeholder="Ex: 150,00" 
-                            />
-                        </div>
-                        
-                        <div className="space-y-4 rounded-md border p-4">
-                            <h4 className="font-medium">Adicionar Produto à OS</h4>
-                            <div className="grid grid-cols-1 sm:grid-cols-12 gap-2 items-end">
-                                <div className="sm:col-span-5">
-                                    <Label htmlFor="currentProductNameEdit">Nome do Produto</Label>
-                                    <Input 
-                                        id="currentProductNameEdit" 
-                                        value={currentProductNameInput} 
-                                        onChange={(e) => setCurrentProductNameInput(e.target.value)} 
-                                        placeholder="Ex: Película de Vidro"
-                                    />
-                                </div>
-                                <div className="sm:col-span-2">
-                                    <Label htmlFor="currentProductQtyEdit">Qtd.</Label>
-                                    <Input 
-                                        id="currentProductQtyEdit" 
-                                        type="number" 
-                                        value={currentProductQtyInput} 
-                                        onChange={(e) => setCurrentProductQtyInput(e.target.value)} 
-                                        min="1"
-                                    />
-                                </div>
-                                <div className="sm:col-span-3">
-                                    <Label htmlFor="currentProductPriceEdit">Preço Unit. (R$)</Label>
-                                    <Input 
-                                        id="currentProductPriceEdit" 
-                                        type="text" 
-                                        value={currentProductPriceInput} 
-                                        onChange={(e) => setCurrentProductPriceInput(e.target.value.replace(/[^0-9,]/g, ''))} 
-                                        placeholder="Ex: 25,00"
-                                    />
-                                </div>
-                                <div className="sm:col-span-2">
-                                     <Button type="button" onClick={handleAddSoldProduct} className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
-                                        <PlusCircle className="mr-2 h-4 w-4" /> Add
-                                    </Button>
-                                </div>
-                            </div>
-
-                            {soldProductsList.length > 0 && (
-                                <div className="mt-4 space-y-2">
-                                    <h5 className="text-sm font-medium">Produtos Adicionados:</h5>
-                                    <div className="rounded-md border">
-                                        <Table>
-                                            <TableHeader>
-                                                <TableRow>
-                                                    <TableHead>Produto</TableHead>
-                                                    <TableHead className="text-center">Qtd</TableHead>
-                                                    <TableHead className="text-right">Unit. (R$)</TableHead>
-                                                    <TableHead className="text-right">Total (R$)</TableHead>
-                                                    <TableHead className="w-[50px]"></TableHead>
-                                                </TableRow>
-                                            </TableHeader>
-                                            <TableBody>
-                                                {soldProductsList.map(prod => (
-                                                    <TableRow key={prod.tempId}>
-                                                        <TableCell>{prod.name}</TableCell>
-                                                        <TableCell className="text-center">{prod.quantity}</TableCell>
-                                                        <TableCell className="text-right">{Number(prod.unitPrice).toFixed(2).replace('.', ',')}</TableCell>
-                                                        <TableCell className="text-right">{Number(prod.totalPrice).toFixed(2).replace('.', ',')}</TableCell>
-                                                        <TableCell>
-                                                            <Button type="button" variant="ghost" size="icon" className="h-7 w-7 text-destructive hover:text-destructive" onClick={() => handleRemoveSoldProduct(prod.tempId)}>
-                                                                <Trash2 className="h-4 w-4" />
-                                                            </Button>
-                                                        </TableCell>
-                                                    </TableRow>
-                                                ))}
-                                            </TableBody>
-                                        </Table>
-                                    </div>
-                                </div>
-                            )}
-                        </div>
-                        
-                        <div className="mt-6 text-right">
-                            <p className="text-lg font-semibold">
-                                Valor Total da OS: <span className="text-accent">R$ {grandTotalDisplay}</span>
-                            </p>
-                        </div>
-                    </CardContent>
-                  </Card>
-
-                </div>
-              </ScrollArea>
-              <DialogFooter className="border-t pt-6 mt-6 pr-4 flex flex-col sm:flex-row justify-between items-center w-full">
-                <Button type="button" variant="outline" onClick={() => handlePrintOS({
-                    osNumber: editingServiceOrder ? editingServiceOrder.osNumber : "PREVISUALIZAÇÃO", 
-                    openingDate: editingServiceOrder ? editingServiceOrder.openingDate : new Date(),
-                    clientName, deviceBrandModel, problemReportedByClient, 
-                    grandTotalValue: parseFloat(grandTotalDisplay.replace(',', '.')) || 0,
-                })}>
-                    <Printer className="mr-2 h-4 w-4" /> Imprimir OS (Via Cliente)
-                </Button>
-                <div className="flex gap-2 mt-4 sm:mt-0">
-                    <DialogClose asChild>
-                        <Button type="button" variant="ghost" onClick={() => { 
-                            setIsEditServiceOrderDialogOpen(false); 
-                            resetFormFields(); 
+                        <Button type="button" variant="ghost" onClick={() => {
+                            setIsEditServiceOrderDialogOpen(false);
+                            resetFormFields();
                         }}>
                             Cancelar
                         </Button>
@@ -1056,7 +767,7 @@ export default function ServiceOrdersPage() {
                         <Button variant="outline" size="icon" onClick={() => handleOpenEditDialog(os)} aria-label="Editar ordem de serviço" disabled={!os.id}>
                           <Pencil className="h-4 w-4" />
                         </Button>
-                         <AlertDialog>
+                          <AlertDialog>
                           <AlertDialogTrigger asChild>
                             <Button variant="destructive" size="icon" disabled={deleteServiceOrderMutation.isPending && deleteServiceOrderMutation.variables === os.id || !os.id} aria-label="Excluir ordem de serviço">
                                {(deleteServiceOrderMutation.isPending && deleteServiceOrderMutation.variables === os.id) ? <Loader2 className="h-4 w-4 animate-spin" /> : <Trash2 className="h-4 w-4" />}
@@ -1071,11 +782,7 @@ export default function ServiceOrdersPage() {
                             </AlertDialogHeader>
                             <AlertDialogFooter>
                               <AlertDialogCancel>Cancelar</AlertDialogCancel>
-<<<<<<< HEAD
                               <AlertDialogAction onClick={async () => os.id && (await handleDeleteServiceOrder(os.id))}>
-=======
-                              <AlertDialogAction onClick={async () => os.id && await handleDeleteServiceOrder(os.id)}>
->>>>>>> 5a9736e1bc95fd07c8314d399cb646a39cc3aa78
                                 Excluir Permanentemente
                               </AlertDialogAction>
                             </AlertDialogFooter>
@@ -1093,9 +800,3 @@ export default function ServiceOrdersPage() {
     </div>
   );
 }
-
-    
-
-    
-
-    
