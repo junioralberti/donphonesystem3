@@ -1,14 +1,9 @@
-<<<<<<< HEAD
-// src/app/(app)/layout.tsx
-=======
-
->>>>>>> 5a9736e1bc95fd07c8314d399cb646a39cc3aa78
 "use client";
 
 import type React from 'react';
 import { useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import Link from 'next/link';
+import Link from 'next/link'; // Importante manter o Link
 import { useAuth } from '@/context/auth-context';
 import { navItems, type NavItem } from '@/config/nav';
 import {
@@ -40,15 +35,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   const [isSupportDialogOpen, setIsSupportDialogOpen] = useState(false);
 
   if (!isAuthenticated) {
-<<<<<<< HEAD
     return null;
   }
 
-=======
-    return null; 
-  }
-  
->>>>>>> 5a9736e1bc95fd07c8314d399cb646a39cc3aa78
   const getInitials = (name: string = "Usuário") => {
     return name.split(' ').map(n => n[0]).join('').toUpperCase();
   }
@@ -61,13 +50,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     <SidebarProvider defaultOpen>
       <Sidebar className="bg-sidebar-background text-sidebar-foreground border-r border-sidebar-border">
         <SidebarHeader className="p-4 border-b border-sidebar-border">
-<<<<<<< HEAD
           <Link
             href="/dashboard"
             className="flex items-center gap-2 text-xl font-semibold text-sidebar-foreground">
-=======
-          <Link href="/dashboard" className="flex items-center gap-2 text-xl font-semibold text-sidebar-foreground">
->>>>>>> 5a9736e1bc95fd07c8314d399cb646a39cc3aa78
             <span className="font-headline">DonPhone</span>
           </Link>
         </SidebarHeader>
@@ -81,18 +66,11 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                   tooltip={{ children: item.title, className: "text-xs" }}
                   className="data-[active=true]:text-sidebar-primary data-[active=true]:bg-sidebar-accent hover:text-sidebar-primary hover:bg-sidebar-accent"
                 >
-<<<<<<< HEAD
-                  {/* ALTERAÇÃO AQUI: Adicionado className="flex items-center gap-2" ao div */}
                   <Link href={item.href}>
-                    <div className="flex items-center gap-2"> {/* <-- NOVO */}
+                    <div className="flex items-center gap-2">
                       <item.icon />
                       <span>{item.title}</span>
                     </div>
-=======
-                  <Link href={item.href}>
-                    <item.icon />
-                    <span>{item.title}</span>
->>>>>>> 5a9736e1bc95fd07c8314d399cb646a39cc3aa78
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -100,11 +78,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           </SidebarMenu>
         </SidebarContent>
         <SidebarFooter className="p-2 border-t border-sidebar-border">
-<<<<<<< HEAD
             <SidebarMenu>
-=======
-           <SidebarMenu>
->>>>>>> 5a9736e1bc95fd07c8314d399cb646a39cc3aa78
             {bottomNavItems.map((item) => (
               <SidebarMenuItem key={item.href}>
                 <SidebarMenuButton
@@ -113,18 +87,11 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                   tooltip={{ children: item.title, className: "text-xs" }}
                   className="data-[active=true]:text-sidebar-primary data-[active=true]:bg-sidebar-accent hover:text-sidebar-primary hover:bg-sidebar-accent"
                 >
-<<<<<<< HEAD
-                  {/* ALTERAÇÃO AQUI: Adicionado className="flex items-center gap-2" ao div */}
                   <Link href={item.href}>
-                    <div className="flex items-center gap-2"> {/* <-- NOVO */}
+                    <div className="flex items-center gap-2">
                       <item.icon />
                       <span>{item.title}</span>
                     </div>
-=======
-                  <Link href={item.href}>
-                    <item.icon />
-                    <span>{item.title}</span>
->>>>>>> 5a9736e1bc95fd07c8314d399cb646a39cc3aa78
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -174,20 +141,12 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           {children}
         </main>
       </SidebarInset>
-<<<<<<< HEAD
-=======
-      
->>>>>>> 5a9736e1bc95fd07c8314d399cb646a39cc3aa78
       <Dialog open={isCalculatorOpen} onOpenChange={setIsCalculatorOpen}>
         <DialogContent className="p-0 max-w-xs border-none bg-transparent shadow-none">
           {/* DialogHeader and DialogTitle are removed to make it more like a floating widget */}
           <CalculatorComponent />
         </DialogContent>
       </Dialog>
-<<<<<<< HEAD
-=======
-
->>>>>>> 5a9736e1bc95fd07c8314d399cb646a39cc3aa78
       <Dialog open={isSupportDialogOpen} onOpenChange={setIsSupportDialogOpen}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
@@ -228,13 +187,6 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-<<<<<<< HEAD
     </SidebarProvider>
   );
 }
-=======
-
-    </SidebarProvider>
-  );
-}
->>>>>>> 5a9736e1bc95fd07c8314d399cb646a39cc3aa78
