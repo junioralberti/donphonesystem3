@@ -4,7 +4,7 @@ require('dotenv').config(); // Carrega as variáveis do .env
 const { app, BrowserWindow, dialog } = require('electron');
 const path = require('path');
 const { spawn } = require('child_process'); // Importa 'spawn' para iniciar o processo Next.js
-const fs = require('fs'); // <--- ESTA LINHA PRECISA ESTAR AQUI!
+const fs = require('fs'); // <--- ESTA LINHA É CRÍTICA PARA O LOGGING!
 const isDev = !app.isPackaged; // Verifica se o aplicativo está em modo de desenvolvimento ou empacotado
 
 let mainWindow;
@@ -15,7 +15,8 @@ const NEXT_PORT = process.env.NEXT_PORT || 9003;
 const NEXT_URL = `http://localhost:${NEXT_PORT}`;
 
 // Diretório para logs no ambiente empacotado
-const logDirectory = path.join(app.getPath('userData'), 'logs'); // <--- ESSAS LINHAS TAMBÉM!
+// app.getPath('userData') aponta para um diretório persistente para o aplicativo do usuário (ex: AppData/Roaming/SeuApp)
+const logDirectory = path.join(app.getPath('userData'), 'logs'); // <--- ESSAS LINHAS SÃO CRÍTICAS PARA O LOGGING!
 if (!fs.existsSync(logDirectory)) {
   fs.mkdirSync(logDirectory, { recursive: true }); // Cria o diretório de logs se não existir
 }
@@ -76,6 +77,8 @@ function startNextServer() {
   // Escreva uma marca de tempo no início de cada execução para facilitar a depuração
   fs.writeSync(logFileStream, `\n--- Nova execução iniciada: ${new Date().toISOString()} ---\n`);
   fs.writeSync(errorLogFileStream, `\n--- Nova execução iniciada: ${new Date().toISOString()} ---\n`);
+  fs.writeSync(logFileStream, `DEBUG: Caminho do servidor Next.js: ${nextServerPath}\n`); // Log adicional
+  fs.writeSync(logFileStream, `DEBUG: process.execPath: ${process.execPath}\n`); // Log adicional
 
 
   console.log(`Tentando iniciar servidor Next.js em: ${nextServerPath}`);
@@ -83,7 +86,7 @@ function startNextServer() {
   nextProcess = spawn(process.execPath, [nextServerPath], {
     env: { ...process.env, PORT: NEXT_PORT, NODE_ENV: 'production' }, // Adicionado NODE_ENV para garantir modo de produção
     cwd: path.join(app.getAppPath(), '.next', 'standalone'),
-    stdio: ['inherit', logFileStream, errorLogFileStream] // <--- ESSA LINHA É CRÍTICA!
+    stdio: ['inherit', logFileStream, errorLogFileStream] // <--- ESSA LINHA É CRÍTICA PARA O LOGGING!
   });
 
   nextProcess.on('error', (err) => {
@@ -130,7 +133,8 @@ app.whenReady().then(async () => {
         console.log('Servidor Next.js pronto.');
         break;
       }
-      console.log(`Aguardando servidor Next.js... Tentativa <span class="math-inline">\{retries \+ 1\}/</span>{maxRetries}`);
+      console.log(`Aguardando servidor Next.js... Tentativa ${retries + 1}/${maxRetries}`);
+      await new Promise(resolve => setTimeout(resolve, retryInterval)); // Espera
       retries++;
     }
 
